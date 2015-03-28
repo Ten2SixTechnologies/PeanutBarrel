@@ -1,0 +1,26 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<a href="#{request.contextPath}/Resources/Images/Policies/EmergencyMapImage.jpg" target="_blank">***Emergency Plans Map***</a><br/><br/><br/>
+		
+		<div id="pictures">
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/Policies/religiousInstruction.xhtml"><img src="#{request.contextPath}/Resources/Images/Policies/religiousInstruction.jpg" alt="Religious Instruction" height="200" width="250"/><br/>Religious Instruction</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/Policies/discipline.xhtml"><img src="#{request.contextPath}/Resources/Images/Policies/discipline.png" alt="Discipline" height="200" width="250"/><br/>Discipline</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/Policies/illness.xhtml"><img src="#{request.contextPath}/Resources/Images/Policies/illness.jpg" alt="Illness" height="200" width="250"/><br/>Illness</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/Policies/itemsFromHome.xhtml"><img src="#{request.contextPath}/Resources/Images/Policies/itemsFromHome.jpg" alt="Items from Home" height="200" width="250"/><br/>Items from Home</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/Policies/outdoorPlay.xhtml"><img src="#{request.contextPath}/Resources/Images/Policies/outdoorPlay.png" alt="Outdoor Play" height="200" width="250"/><br/>Outdoor Play</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/Policies/smoking.xhtml"><img src="#{request.contextPath}/Resources/Images/Policies/smoking.png" alt="Smoking" height="200" width="250"/><br/>Smoking</a></div>
+		</div>
+	</ui:define>
+</ui:composition>

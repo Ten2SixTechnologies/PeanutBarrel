@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">      
+      
+	<h:head>
+		<ui:insert name="title"><title>LilPeanutsChildCare</title></ui:insert>
+		<ui:insert name="links">
+			<link rel="stylesheet" href="#{request.contextPath}/Resources/Style/newStyle.css" type="text/css"/>
+		</ui:insert>
+	</h:head>
+	
+	<h:body id="body">
+		<!--Site Logo-->
+		<h1 id="header">
+			<img src="#{request.contextPath}/Resources/Images/General/logo.png" height="200" width="375" alt="Lil Peanuts Logo" border="0"/>
+		</h1>
+	
+	    <!--Navigation Bar-->
+	    <ui:insert name="navBar">
+			<ul id= "navBar">
+				<li><a href="#{request.contextPath}/WebPages/home.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/home.png" height="60" width="125" alt="Home" border="0"/></a></li>
+				<li><a href="#{request.contextPath}/WebPages/photos.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/photos.png" height="60" width="125" alt="Photos" border="0"/></a></li>
+				<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>			
+				<li><a href="#{request.contextPath}/WebPages/contactMe.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/contactMe.png" height="60" width="125" alt="Contact Me" border="0"/></a></li>
+				<!--<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/peanutBarrel.png" height="60" width="125" alt="Peanut Barrel" border="0"/></a></li>-->
+			</ul>
+		</ui:insert>
+
+		<!--Page-->
+		<div id= "content">
+			<ui:insert name="content">This page is blank. Please contact the Web Administrator for LilPeanutsChildCare.com at (517-528-2106)</ui:insert>
+		</div>
+		
+		<!--Footer -->
+		<div id="footer">
+			<br/><p>Copyright &copy; 2014 Lil Peanuts Child Care "All Rights Reserved"</p>
+		</div>
+	</h:body>
+</html>

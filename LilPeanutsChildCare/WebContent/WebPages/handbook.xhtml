@@ -1,0 +1,15 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+	<!--Page-->
+	<ui:define name="content">
+		<div id="pictures">
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/billingInfo.xhtml"><img src="#{request.contextPath}/Resources/Images/Handbook/billingInfo.jpg" alt="Billing Info" height="200" width="175"/><br/>Billing Info</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/dailySchedule.xhtml"><img src="#{request.contextPath}/Resources/Images/Handbook/dailySchedule.png" alt="Daily Schedule" height="200" width="175"/><br/>Daily Schedule</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/food.xhtml"><img src="#{request.contextPath}/Resources/Images/Handbook/foodMatters.png" alt="Food Matters" height="200" width="175"/><br/>Food Matters</a></div>
+			<div class="image"><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/Handbook/policies.jpg" alt="Policies" height="200" width="175"/><br/>Policies</a></div>
+		</div>
+	</ui:define>
+</ui:composition>

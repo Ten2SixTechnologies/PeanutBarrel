@@ -1,0 +1,62 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/logOut.png" height="60" width="125" alt="Log Outl" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<p:messages id="msgs"/>
+		<h:form>
+			<p:panel id="panel">
+				<p:focus context="panel"/>
+				<h:panelGrid columns="3">
+					<h:inputText id="firstName" name="firstName" tabindex="1" value="#{newChild.firstName}" required="true" label="First Name"/>
+					<p:watermark for="firstName" value="First Name" />
+					<p:message for="firstName" display="icon" value="This is required!"/>
+					
+					<h:inputText id="middleName" name="middleName" tabindex="2" value="#{newChild.middleName}" required="true" label="Middle Initial">
+						<f:validateLength maximum="1" />
+					</h:inputText>
+					<p:watermark for="middleName" value="Middle Initial" />
+					<p:message for="middleName" display="icon"/>
+					
+					<h:inputText id="lastName" name="lastName" tabindex="3" value="#{newChild.lastName}" required="true" label="Last Name"/>
+					<p:watermark for="lastName" value="Last Name" />
+					<p:message for="lastName" display="icon"/>
+					
+					<p:calendar id="birthDate" name="birthDate" tabindex = "4" value="#{newChild.birthDate}" required="true" label="Birth Date"/>
+					<p:watermark for="birthDate" value="Birth Date" />
+					<p:message for="birthDate" display="icon"/>
+					
+					<p:inputTextarea id="medicalInfo" name="medicalInfo" tabindex="5" value="#{newChild.medicalInfo}" label="Medical Information"/>
+					<p:watermark for="medicalInfo" value="Medical Information"/>
+					<p:message for="medicalInfo" display="icon"/>
+					
+					<p:inputTextarea id="notes" name="notes" tabindex="6" value="#{newChild.notes}" label="Notes"/>
+					<p:watermark for="notes" value="Notes"/>
+					<p:message for="notes" display="icon"/>
+					
+					<p:fileUpload value="#{newChild.file}" mode="simple"/>
+					<p:outputLabel for="family" value=""/>
+					<p:outputLabel for="family" value=""/>
+			        
+			        <p:selectOneMenu id="family" name="family" tabindex="7" value="#{newChild.family}" label="Family">
+			        	<f:selectItems value="#{newChild.familyList}"/>
+			        </p:selectOneMenu>
+			        <div><!-- PlaceHolder --></div>
+			        <p:message for="family" display="icon"/>
+					
+					<h:commandButton id="nextButton" tabindex="8" value="Next" action="#{newChild.next}"/>
+				</h:panelGrid>
+				</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

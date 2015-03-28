@@ -1,0 +1,26 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Religious Instruction</u><br/><br/><br/>
+		No attempt is made to indocrtinate any child for or against any faith.<br/>
+		
+		<ul>
+			<li>Religious and cultural values are shared with children through stories, songs, and mealtime prayers.</li>
+			<li>We observe religious holidays as such.</li>
+			<li>If your child is in my care on Wednesday evenings, they may attend church with my family and me.</li>
+		</ul>
+		<br/>
+		I will be happy to answer any questions you may have on these matters.
+	</ui:define>
+</ui:composition>
