@@ -1,6 +1,6 @@
 body { 
-	background-image:url(/Resources/Images/General/background.jpg); /*Use this for Online*/
-	/*background-image:url(/LilPeanutsChildCare/Resources/Images/General/background.jpg); /*Use this for in development*/
+	/*background-image:url(/Resources/Images/General/background.jpg); /*Use this for Online*/
+	background-image:url(/LilPeanutsChildCare/Resources/Images/General/background.jpg); /*Use this for in development*/
 	color:#000000;
 	font-family: Arial, Verdana, sans-serif;
 	font-weight: bold;
