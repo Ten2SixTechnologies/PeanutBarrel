@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/logOut.png" height="60" width="125" alt="Log In" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<div id="pictures">
+				<ui:repeat var="child" value="#{roster.children}" varStatus="varStatus">
+					<h:form>
+						<h:commandLink styleClass="blackText" action = "#{roster.clickListener}" target="_blank">
+							<div class="image"><p:graphicImage value="#{roster.picture}" height="200" width="250" border="5" alt="No Image">
+								<f:param name="childId" value="#{child.childId}"/>
+							</p:graphicImage><br/>#{child.firstName}</div>
+							<f:setPropertyActionListener target="#{roster.childIndex}" value="#{varStatus.index}"/>
+						</h:commandLink>
+					</h:form>
+				</ui:repeat>
+			</div>
+			
+			<br/><br/><br/>
+			
+			<br/><br/><br/>
+	</ui:define>
+</ui:composition>

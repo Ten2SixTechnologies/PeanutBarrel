@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Illness and Communicable Diseases</u><br/>
+		<p>Childhood diseases and illness are part of growing up. Children with fever of 100 degree or higher, or who are otherwise ill, need to have other 
+		arrangements made for their care. I would not want your child or someone else to be contagious. If your child becomes ill while in my care they
+		will need to be picked up. After having a contagious disease a signed statement from a doctor will need to be on file stating your child is no
+		longer contagious.</p>
+	</ui:define>
+</ui:composition>

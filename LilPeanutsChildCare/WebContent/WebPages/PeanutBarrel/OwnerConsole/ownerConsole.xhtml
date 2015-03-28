@@ -1,0 +1,24 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/logOut.png" height="60" width="125" alt="Log In" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		Owner's Console
+		<br/>
+		<br/>
+		<h:form>
+			<h:commandButton id="newAdultButton" tabindex="1" value="New Adult" action="#{ownerConsole.register}"/>
+			<h:commandButton id="changeCredentials" tabindex="3" value="Change Credentials" action="#{ownerConsole.changeCridentials}"/>
+			<h:commandButton id="newChildButton" tabindex="2" value="New Child" action="#{ownerConsole.newChild}"/>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,38 @@
+/*Used by changeChildStatus*/
+#childStatus{
+	font-size:25pt;
+	font-weight:bold;
+	font-family:Calibri;
+}
+#clocks{
+	position:relative;
+	float: left;
+}
+#digitalClock {
+	border:0;
+	width:300px;
+}
+#digitalClock ul {
+	position:absolute;
+	bottom:100px;
+	left:50px;
+	margin:0;
+	padding:0.1em;
+	background:#ffcf72;
+	color:#a60000;
+	list-style-type:none;
+	font-size:25pt;
+	text-align:center;
+	font-family: Calibri;
+	font-weight: bold;
+}
+#digitalClock li {
+	display:inline;
+	padding:0;
+	margin:0;
+}
+#analogClock{
+	position:absolute;
+	top:75px;
+	left:100px;
+}

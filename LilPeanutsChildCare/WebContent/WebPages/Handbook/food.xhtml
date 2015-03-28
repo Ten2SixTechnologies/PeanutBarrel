@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		I offer breakfast, lunch, dinner and three snacks each day. If your child is in care durring these serving times 
+		(see <a href="#{request.contextPath}/WebPages/Handbook/dailySchedule.xhtml">schedule</a>) they will be offered healthy and nutritional items. If your child has special
+		medical conditions (allergies), likes and/or dislikes please let me know and I will do all that I can to accommodate them.
+		<br/><br/>
+		<a href="#{request.contextPath}/Resources/Images/Weekly_Menu_Sample.pdf" target="_blank">Please click here for a sample of a weekly menu.</a>
+	</ui:define>
+</ui:composition>

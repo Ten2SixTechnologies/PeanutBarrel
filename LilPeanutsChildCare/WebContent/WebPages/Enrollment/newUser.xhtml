@@ -1,0 +1,86 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/logOut.png" height="60" width="125" alt="Log Outl" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<p:messages id="msgs"/>
+		<h:form>
+			<p:panel id="panel">
+				<p:focus context="panel"/>
+				<h:panelGrid columns="3">
+					<h:inputText id="firstName" name="firstName" tabindex="1" value="#{newUser.firstName}" required="true" label="First Name"/>
+					<p:watermark for="firstName" value="First Name" />
+					<p:message for="firstName" display="icon" value="This is required!"/>
+					
+					<h:inputText id="middleName" name="middleName" tabindex="2" value="#{newUser.middleName}" required="true" label="Middle Initial">
+						<f:validateLength maximum="1" />
+					</h:inputText>
+					<p:watermark for="middleName" value="Middle Initial" />
+					<p:message for="middleName" display="icon"/>
+					
+					<h:inputText id="lastName" name="lastName" tabindex="3" value="#{newUser.lastName}" required="true" label="Last Name"/>
+					<p:watermark for="lastName" value="Last Name" />
+					<p:message for="lastName" display="icon"/>
+					
+					<p:inputMask id="primaryPhone" name="primaryPhone" tabindex="4" value="#{newUser.primaryPhone}" required="true" label="Primary Phone" mask="(999) 999-9999"/>
+					<p:watermark for="primaryPhone" value="Primary Phone" />
+					<p:message for="primaryPhone" display="icon"/>
+					
+					<p:inputMask id="secondaryPhone" name="secondaryPhone" tabindex="5" value="#{newUser.secondaryPhone}" label="Secondary Phone" mask="(999) 999-9999"/>
+					<p:watermark for="secondaryPhone" value="Secondary Phone" />
+					<p:message for="secondaryPhone" display="icon"/>
+					
+					<p:inputText id="eMail" name="eMail" tabindex="6" value="#{newUser.eMail}" label="E-Mail" />
+					<p:watermark for="eMail" value="E-Mail" />
+					<p:message for="eMail" display="icon"/>
+					
+					<p:inputText id="houseNumber" name="houseNumber" tabindex="7" value="#{newUser.houseNumber}" label="House Number" required="true"/>
+					<p:watermark for="houseNumber" value="House Number" />
+					<p:message for="houseNumber" display="icon"/>
+					
+					<p:inputText id="street" name="street" tabindex="8" value="#{newUser.street}" label="Street" required="true"/>
+					<p:watermark for="street" value="Street" />
+					<p:message for="street" display="icon"/>
+					
+					<p:inputText id="apt" name="apt" tabindex="9" value="#{newUser.apt}" label="Apartment"/>
+					<p:watermark for="apt" value="Apartment" />
+					<p:message for="apt" display="icon"/>
+					
+					<p:inputText id="city" name="city" tabindex="10" value="#{newUser.city}" label="City" required="true"/>
+					<p:watermark for="city" value="City" />
+					<p:message for="city" display="icon"/>
+					
+					<p:inputText id="zipCode" name="zipCode" tabindex="11" value="#{newUser.zipCode}" label="Zip Code" required="true">
+						<f:validateLength maximum="5" />
+					</p:inputText>
+					<p:watermark for="zipCode" value="Zip Code" />
+					<p:message for="zipCode" display="icon"/>
+					
+					<p:selectOneMenu id="state" name="state" tabindex="12" value="#{newUser.state}" required="true" label="State">  
+						<f:selectItems value="#{newUser.stateList}"/>
+			        </p:selectOneMenu>
+			        <div><!-- PlaceHolder --></div>
+			        <p:message for="state" display="icon"/>
+			        
+			        <p:selectOneMenu id="family" name="family" tabindex="13" value="#{newUser.family}" label="Family">
+			        	<f:selectItems value="#{newUser.familyList}"/>
+			        </p:selectOneMenu>
+			        <div><!-- PlaceHolder --></div>
+			        <p:message for="family" display="icon"/>
+					
+					<h:commandButton id="nextButton" tabindex="13" value="Next" action="#{newUser.next}"/>
+				</h:panelGrid>
+				</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

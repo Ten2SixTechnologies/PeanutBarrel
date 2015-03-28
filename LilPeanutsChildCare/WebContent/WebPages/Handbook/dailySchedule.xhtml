@@ -1,0 +1,38 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+	<!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>
+		</ul>
+	</ui:define>
+
+	<!--Page-->
+	<ui:define name="content">
+		<p>I will do my best to offer a consistant daily schedule. However, some plans and special events may alter the routine from time to time.</p>
+
+		<table id="scheduleTable" border="5" cellspacing="5">
+			<tr><td>dropoff - 08:30am</td><td>Breakfast</td></tr>
+			<tr><td>08:30am - 09:30am</td><td>Exploring and Learning ABC's and 123's through Play, Crafts and Circle Time</td></tr>
+			<tr><td>09:30am - 10:00am</td><td>Quiet Play with Books and Puzzles</td></tr>
+			<tr><td>10:00am - 10:15am</td><td>Healthy Morning Snack</td></tr>
+			<tr><td>10:15am - 11:45am</td><td>Outside Play (Weather Permitting)</td></tr>
+			<tr><td>10:15am - 11:45am</td><td>Music and Creative Art (Bad Weather)</td></tr>
+			<tr><td>11:45am - 12:30pm</td><td>Nutritional Lunch as per the <a href="http:\\www.acdkids.org">Association for Child Development</a> Standards</td></tr>
+			<tr><td>12:30pm - 12:45pm</td><td>Cleanup / Brush Teeth / Story Time</td></tr>
+			<tr><td>12:45pm - 02:45pm</td><td>Nap Time (approx.)</td></tr>
+			<tr><td>02:45pm - 03:15pm</td><td>Quiet Play with Books and Puzzles</td></tr>
+			<tr><td>03:15pm - 03:30pm</td><td>Healthy Afternoon Snack</td></tr>
+			<tr><td>03:30pm - 05:45pm</td><td>Exploring and Learning ABC's and 123's through Play, Crafts and Circle Time</td></tr>
+			<tr><td>06:00pm - 06:30pm</td><td>Dinner</td></tr>
+			<tr><td>06:30pm - 07:30pm</td><td>Outside Play (Weather Permitting)</td></tr>
+			<tr><td>06:30pm - 07:30pm</td><td>Music and Creative Art (Bad Weather)</td></tr>
+			<tr><td>07:30pm - 08:00pm</td><td>Learning Cooperation and Social Skills through Creative Cleanup Time Fun</td></tr>
+			<tr><td>08:00pm - 08:15pm</td><td>Evening Snack</td></tr>
+			<tr><td>08:15pm - pickup</td><td>Quiet time with a movie and lots of snuggles untill parent pickup.</td></tr>
+		</table>
+	</ui:define>
+</ui:composition>
