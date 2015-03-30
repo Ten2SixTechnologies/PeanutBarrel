@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Discipline Policy</u><br/><br/>
+		It is my personal philosophy that every child should be cherished and trained with much love, compasion and understanding. 
+		I also believe that children learn by example, consistency, and positive reinforcement. 
+		To help facilitate this, I keep the rules simple and consistent:<br/>
+		
+		<ul>
+			<li>When negative behavior occurs, we discuss and practice what the appropriate behavior would be.</li>
+			<li>In situations where children are too upset or emotional to discuss a situation, I will wait until they are calm to work through it.</li>
+			<li>I believe that redirection is always the first plan of action.</li>
+			<li>In extreme situations, where a child is in danger of hurting themselves or others, a brief time-out may be warranted.</li>
+			<li>These time-outs will not ever exceed one minute per year of age. I use time-outs very infrequently, and only as a last resort.</li>
+			<li>If a severe behavior becomes a consistent problem, such as biting, hitting, or other destructive or harmful actions, a meeting will be scheduled with the parent/guardian to discuss possible options.</li>
+			<li>Every effort will be made to solve the issue in a positive, consistent manner.</li>
+			<li>Under no circumstances will physical discipline ever be used.</li>
+		</ul><br/>
+		
+		If you have any discipline questions or concerns, please speak with me immediately, I would be more than happy to discuss them with you.
+	</ui:define>
+</ui:composition>

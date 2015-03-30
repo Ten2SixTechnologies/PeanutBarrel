@@ -1,0 +1,36 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/logOut.png" height="60" width="125" alt="Log Outl" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<fieldset id= "fieldset">
+			<legend>Please Sign Up</legend>
+				<p:panel id="panel" style="text-align: center">
+				<p:focus context="panel"/>
+					<h:form>
+					<h:panelGrid columns="2">
+						<p:inputText id="newUserName" tabindex="1" value="#{registration.newUserName}"/>
+						<p:watermark for="newUserName" value="New User Name" />
+						
+            			<p:password id="newPassword" tabindex="2" value="#{registration.newPassword}" feedback="true" inline="true"/>
+						<p:watermark for="newPassword" value="New Password" />
+						
+						<h:commandButton tabindex="4" value="Submit" action="#{registration.submit}"/>
+					</h:panelGrid>
+					</h:form>
+				</p:panel>
+		</fieldset>
+		<br/>
+		Please remember your user name and password! 
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Items From Home</u><br/>
+		<p>I offer many different toys and activities for your child in my home, so toys from home are not allowed. I will supply blankets and pillows for nap time.
+		Please bring an extra outfit or two that can be kept in your child's box incase of an accident of some kind. On special days your child may want to bring
+		a treat for themselves and their friends, please be sure it is a healthy treat and inform me in advance so we can ensure it doesn't conflict with any
+		allergies of the other children.</p>
+	</ui:define>
+</ui:composition>
