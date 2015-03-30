@@ -1,0 +1,54 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<div id="alignLeft">
+			<table cellpadding="5">
+				<tr><td>AGE</td><td>WEEKLY</td><td>DAILY</td><td>HOURLY</td></tr>
+				<tr><td>First infant/toddler</td><td>$185.00</td><td>$40.00</td><td>$4.75</td></tr>
+				<tr><td>Second infant/toddler</td><td>$145.00</td><td>$32.00</td><td>$3.75</td></tr>
+				<tr><td>3 years and older</td><td>$145.00</td><td>$32.00</td><td>$3.75</td></tr>
+			</table>
+			<br/>
+			(Week = 50 hours max. Day = 5 hours to 9 hours)<br/>
+			*Anything over 50 hours in one week, or 9 hours in one day is billed at the hourly rate.
+			<br/>
+			(Please call to verify current rates.)
+			<br/>
+			<br/>
+			<br/>
+			<u>Payment Options</u>
+			<ul>
+				<li>I will accept check, cash, money order or State/DHS pay.</li>
+				<li>Payment is required on the first day of attendance each week for the entire week. Bi-weekly and monthly payments 
+					may be arranged.
+				</li>
+				<li>A $5.00 late fee will be charged to your account daily if the account is not paid in full as scheduled.</li>
+				<li>NON-SUFFICIENT FUNDS - You Will be billed $40.00 for any check returned.</li>
+				<li>After two NSF charges, ONLY cash or money order will be accepted.</li>
+			</ul>
+			<br/>
+
+			<u>Attendance</u>
+			<ul>
+				<li>You must submit the following week's schedule by Friday of the previous week.</li>
+				<li>First day absent of each week require payment unless I am notified at least 3 days in advance.
+					Any consecutive absences that same week will not be charged.
+				</li>
+				<li>If you are late picking up your child, there will be a $5.00 charge after 15 minutes, and $5.00 for every part
+					of 15 minutes thereafter.
+				</li>
+			</ul>
+		</div>
+	</ui:define>
+</ui:composition>

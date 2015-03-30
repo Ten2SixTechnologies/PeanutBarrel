@@ -1,0 +1,69 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!-- Links -->
+    <ui:define name="links">
+		<link rel="stylesheet" href="#{request.contextPath}/Resources/Style/lilPeanuts.css" type="text/css"/>
+		<link rel="stylesheet" href="#{request.contextPath}/Resources/Style/changeChildStatus.css" type="text/css"/>
+		<script type="text/javascript" src="#{request.contextPath}/Resources/JavaScript/digitalClock.js"/>
+	</ui:define>
+    
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="javascript:window.close()"><img src="#{request.contextPath}/Resources/Images/NavigationBar/roster.png" height="60" width="125" alt="Roster" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<div>
+			<div id= "clocks">
+				<img src="#{request.contextPath}/Resources/Images/PeanutBarrel/sidewaysPeanut.png" height="600" width="275" alt="Sideways Peanut" border="0"/>
+				<div id="analogClock">
+					<script language="JavaScript">var clocksize=150;</script>
+					<script src="http://gheos.net/js/clock.js"></script>
+				</div>
+				<div id="digitalClock">
+					<ul>
+						<li id="hours"></li>
+						<li> :</li>
+						<li id="minutes"></li>
+						<li> :</li>
+						<li id="seconds"></li>
+						<li> </li>
+						<li id="diem"></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- Child is currently signed in -->	
+			<h:panelGroup rendered="#{changeChildStatus.childStatus == 'in'}">
+				<h:form>
+					<br/><br/><br/>
+					<span id="childStatus">#{child.firstName} is currently signed in</span>
+					<br/><br/><br/>
+					<h:commandLink action = "#{changeChildStatus.signOut}" onclick="window.close()">
+						<img src="#{request.contextPath}/Resources/Images/NavigationBar/signOut.png" height="150" width="313" alt="Sign Out" border="0"/>
+					</h:commandLink>
+				</h:form>
+			</h:panelGroup>
+
+			<!-- Child is currently signed out -->
+			<h:panelGroup rendered="#{changeChildStatus.childStatus == 'out'}">
+				<h:form>
+					<br/><br/><br/>
+					<span id="childStatus">#{child.firstName} is currently signed out</span>
+					<br/><br/><br/>
+					<h:commandLink action = "#{changeChildStatus.signIn}" onclick="window.close()">
+						<img src="#{request.contextPath}/Resources/Images/NavigationBar/signIn.png" height="150" width="313" alt="Sign In" border="0"/>
+					</h:commandLink>
+				</h:form>
+			</h:panelGroup>
+		</div>
+			
+		<!-- Load JavaScripts -->
+		<script>window.onload=digital_clock();</script>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,29 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+	<!--Page-->
+	<ui:define name="content">
+		<fieldset id= "fieldset">
+			<legend>Please Log In</legend>
+			<h:form>
+				<p:panel id="panel">
+				<p:focus context="panel"/>
+				<h:panelGrid columns="2">
+					<h:inputText id="userName" name="userName" tabindex="1" value="#{logInValidation.userName}"/>
+					<p:watermark for="userName" value="User Name" />
+					
+					<h:inputSecret id="password" name="password" tabindex="2" value="#{logInValidation.password}"/>
+					<p:watermark for="password" value="Password" />
+					
+					<h:commandButton id="logInButton" tabindex="3" value="Log In" action="#{logInValidation.validate}"/>
+				</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</fieldset>
+		<br/><br/><a href="#{request.contextPath}/WebPages/Enrollment/enrollment.xhtml">Want to sign up?<br/>Please click here for more information.</a>
+		<br/>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,45 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/contactMe.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/contactMe.png" height="60" width="125" alt="Log Out" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<div id="alignLeft">
+			<b><u>Checklist of Items Needed for Enrollment</u></b>
+			<ul>
+				<li>Additional Info. Form (choose appropriate)
+					<ul>
+						<li><a href="#{request.contextPath}/Resources/Forms/AdditionalInfant_ToddlerInfo.pdf" target="_blank">Infant - Toddler</a></li>
+						<li><a href="#{request.contextPath}/Resources/Forms/AdditionalToddler_PreschoolInfo.pdf" target="_blank">Toddler - Preshcool</a></li>
+					</ul>
+				</li>
+				<li><a href="#{request.contextPath}/Resources/Forms/RegistrationForm.pdf" target="_blank">Registration Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/HealthRecord.pdf" target="_blank">Health Record Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/EmergencyAuthorization.pdf" target="_blank">Emergency Authorization Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/PrescriptionMedication.pdf" target="_blank">Prescription Medication Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/Non-PrescriptionMedication.pdf" target="_blank">Non-Prescription Medication Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/ChildPickupAuthorization.pdf" target="_blank">Child Pickup Authorization Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/Transportation.pdf" target="_blank">Transportation Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/Photograph.pdf" target="_blank">Photograph Form</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/BCAL-3900.pdf" target="_blank">Child In Care Statement (BCAL-3900)</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/ChildInfoCard.pdf" target="_blank">Child Information Card</a></li>
+				<li><a href="#{request.contextPath}/Resources/Forms/HandbookReceipt.pdf" target="_blank">Receipt of Policy and Procedure Handbook</a></li>
+				<li>CACFP - (Food Program) - Registration</li>
+				<li>Please bring with you to the interview:
+					<ul>
+						<li>Copy of custody agreement (if applicable)</li>
+						<li>Shot Record</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</ui:define>
+</ui:composition>

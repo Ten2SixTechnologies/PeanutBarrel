@@ -1,0 +1,19 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Smoking</u><br/>
+		<p>Lil' Peanuts is a Smoke Free home. Furthermore, the State of Michigan prohibits smoking of any kind on the property whenever children are in care.
+		Please be sure you are following this <u>Law</u> <b>BEFORE</b> pulling into the driveway. Thank you!</p>
+	</ui:define>
+</ui:composition>

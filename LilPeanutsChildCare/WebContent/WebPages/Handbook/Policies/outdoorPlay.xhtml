@@ -1,0 +1,20 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Outdoor Play</u><br/>
+		<p>Fresh air and exercise are important to good health. Outdoor play is part of the daily schedule for all children.
+		During inclement weather, too hot or too cold, we plan indoor activities. Please be sure your child has
+		appropriate clothing for all seasons.</p>
+	</ui:define>
+</ui:composition>
