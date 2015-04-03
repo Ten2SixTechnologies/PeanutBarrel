@@ -16,15 +16,13 @@ public abstract class DAO
 
     public static ResultSet executeQuery(String query)
     {
-        query = "select * from time_log where time_in = to_date('02/04/'||?, 'MM/DD/YYYY')";
         Connection con = null;
         ResultSet rs = null;
         PreparedStatement stmt = null;
         try
         {
             con = DatabaseServices.getConnection();
-            stmt = con.prepareStatement(query, 1);
-            stmt.setString(1, "2014");
+            stmt = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             rs = stmt.executeQuery();
             con.commit();
         }

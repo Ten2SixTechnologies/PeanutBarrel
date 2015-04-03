@@ -5,11 +5,17 @@ import java.sql.*;
 
 public class DatabaseServices
 {
+    //Production connection
+//	  static final String PASSWORD = "ja121905";
+//    static final String URL = "jdbc:mysql://mysql-LilPeanutsChildCare.jelastic.servint.net:3306/peanutbarreldb";
+//    static final String USERNAME = "code_connection";
+    
+    //Aaron's Local Connection
+	static final String PASSWORD = "ja121905";
+    static final String URL = "jdbc:mysql://localhost:3306/peanutbarreldb";
+    static final String USERNAME = "root";
 
-    static final String PASSWORD = "ja121905";
     static Connection con = null;
-    static final String URL = "jdbc:mysql://mysql-LilPeanutsChildCare.jelastic.servint.net:3306/peanutbarreldb";
-    static final String USERNAME = "code_connection";
 
     public DatabaseServices()
     {
@@ -20,7 +26,7 @@ public class DatabaseServices
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://mysql-LilPeanutsChildCare.jelastic.servint.net:3306/peanutbarreldb", "code_connection", "ja121905");
+            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             con.setAutoCommit(false);
         }
         catch(Exception e)

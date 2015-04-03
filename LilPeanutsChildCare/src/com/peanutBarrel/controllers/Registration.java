@@ -1,7 +1,10 @@
 package com.peanutBarrel.controllers;
 
+import javax.faces.bean.ManagedBean;
+
 import com.peanutBarrel.actions.ActionsDelegate;
 
+@ManagedBean (name = "registration")
 public class Registration
 {
 

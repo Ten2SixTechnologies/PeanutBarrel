@@ -5,8 +5,10 @@ import com.peanutBarrel.dao.object.StateDAO;
 import java.util.*;
 import java.util.Map.Entry;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 
+@ManagedBean (name = "newUser")
 public class NewUser
 {
 

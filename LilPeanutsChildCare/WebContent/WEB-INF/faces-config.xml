@@ -13,18 +13,14 @@
  		</navigation-case>
  		<navigation-case>
  			<from-outcome>1</from-outcome>
- 			<to-view-id>/WebPages/logIn.xhtml</to-view-id>
- 		</navigation-case>
- 		<navigation-case>
- 			<from-outcome>2</from-outcome>
  			<to-view-id>/WebPages/PeanutBarrel/UserConsole/roster.xhtml</to-view-id>
  		</navigation-case>
  		<navigation-case>
- 			<from-outcome>3</from-outcome>
+ 			<from-outcome>2</from-outcome>
  			<to-view-id>/WebPages/PeanutBarrel/OwnerConsole/ownerConsole.xhtml</to-view-id>
  		</navigation-case>
  		<navigation-case>
- 			<from-outcome>4</from-outcome>
+ 			<from-outcome>3</from-outcome>
  			<to-view-id>/WebPages/PeanutBarrel/AdminConsole/adminConsole.xhtml</to-view-id>
  		</navigation-case>
  	</navigation-rule>
