@@ -5,9 +5,11 @@ import com.peanutBarrel.data.ChildPicture;
 import java.util.*;
 import java.util.Map.Entry;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 import org.primefaces.model.UploadedFile;
 
+@ManagedBean (name = "newChild")
 public class NewChild
 {
 

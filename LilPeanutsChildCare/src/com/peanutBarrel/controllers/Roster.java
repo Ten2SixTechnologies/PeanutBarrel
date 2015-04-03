@@ -3,6 +3,7 @@ package com.peanutBarrel.controllers;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.model.DefaultStreamedContent;
@@ -13,6 +14,7 @@ import com.peanutBarrel.data.ChildPicture;
 import com.peanutBarrel.entities.Adult;
 import com.peanutBarrel.entities.Child;
 
+@ManagedBean (name = "roster")
 public class Roster
 {
 
@@ -23,11 +25,8 @@ public class Roster
 
     public Roster()
     {
-    }
-
-    public void RosterScreen()
-    {
-        loadChildren();
+    	setAdult((Adult) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInAdult"));
+    	loadChildren();
     }
 
     public void loadChildren()

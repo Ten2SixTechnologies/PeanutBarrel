@@ -1,11 +1,13 @@
 package com.peanutBarrel.controllers;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import com.peanutBarrel.actions.ActionsDelegate;
 import com.peanutBarrel.entities.Adult;
 import com.peanutBarrel.entities.Child;
 
+@ManagedBean (name = "changeChildStatus")
 public class ChangeChildStatus
 {
 
@@ -15,6 +17,7 @@ public class ChangeChildStatus
 
     public ChangeChildStatus()
     {
+    	setChild((Child) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("child"));
     }
 
     public void setChild(Child child)

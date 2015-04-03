@@ -79,7 +79,7 @@ public class CridentialsDAO extends DAO
         Boolean result;
         ResultSet rs;
         result = Boolean.valueOf(false);
-        rs = executeQuery((new StringBuilder("SELECT USER_NAME FROM CRIDENTIALS WHERE USER_NAME = '")).append(userName).append("'").toString());
+        rs = executeQuery((new StringBuilder("SELECT USER_NAME FROM CRIDENTIALS WHERE USER_NAME = '" + userName + "'").toString()));
         try
         {
             if(rs.next())

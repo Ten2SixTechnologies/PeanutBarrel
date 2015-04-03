@@ -1,13 +1,14 @@
 package com.peanutBarrel.controllers;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import com.peanutBarrel.actions.ActionsDelegate;
 import com.peanutBarrel.entities.Adult;
 
+@ManagedBean (name = "logInValidation")
 public class LogInValidation
 {
-
     private String userName;
     private String password;
     private Adult adult;
