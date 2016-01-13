@@ -11,9 +11,9 @@ public class DatabaseServices
 //    static final String USERNAME = "code_connection";
     
     //Aaron's Local Connection
-	static final String PASSWORD = "ja121905";
-    static final String URL = "jdbc:mysql://localhost:3306/peanutbarreldb";
-    static final String USERNAME = "root";
+	static final String PASSWORD = "TenToSix17501026!!";
+    static final String URL = "jdbc:mysql://localhost:3306/peanutbarrel";
+    static final String USERNAME = "peanutbarrel";
 
     static Connection con = null;
 
