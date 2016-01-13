@@ -1,0 +1,25 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Toilet Training</u><br/><br/><br/>
+		Toilet training should begin at home over a long weekend, or holiday. Once you have had success at home for at least
+		a week, your child may begin wearing CLOTH training pants with rubber pants to cover them at child care. Some pull-ups
+		for nap time or other extended periods must still be provided. Also, you MUST provide at least 2 complete changes of clothing
+		for your child. Under no circumstances will your child be allowed to potty-train in regular underware. This is for sanitary
+		reasons! Regular underware cannot contain urine and feces to prevent the spread of germs to other children in care, or to my
+		family. Also, if you begin training, please notify me so that I can continue the work you have accomplished. Further, if
+		within 2-3 weeks, your child shows no sign of progress, I reserve the right to put them back in diapers or pull-ups and try
+		again in a few weeks.
+	</ui:define>
+</ui:composition>

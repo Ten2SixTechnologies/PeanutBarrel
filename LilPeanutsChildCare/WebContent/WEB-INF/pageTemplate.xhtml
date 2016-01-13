@@ -13,9 +13,9 @@
 		</ui:insert>
 	</h:head>
 	
-	<h:body id="body">
+	<h:body>
 		<!--Site Logo-->
-		<h1 id="header">
+		<h1>
 			<img src="#{request.contextPath}/Resources/Images/General/logo.png" height="200" width="375" alt="Lil Peanuts Logo" border="0"/>
 		</h1>
 	
@@ -24,7 +24,8 @@
 			<ul id= "navBar">
 				<li><a href="#{request.contextPath}/WebPages/home.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/home.png" height="60" width="125" alt="Home" border="0"/></a></li>
 				<li><a href="#{request.contextPath}/WebPages/photos.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/photos.png" height="60" width="125" alt="Photos" border="0"/></a></li>
-				<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>			
+				<li><a href="#{request.contextPath}/WebPages/handbook.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/handbook.png" height="60" width="125" alt="Handbook" border="0"/></a></li>
+				<li><a href="#{request.contextPath}/WebPages/aboutMe.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/aboutMe.png" height="60" width="125" alt="About Me" border="0"/></a></li>			
 				<li><a href="#{request.contextPath}/WebPages/contactMe.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/contactMe.png" height="60" width="125" alt="Contact Me" border="0"/></a></li>
 				<!--<li><a href="#{request.contextPath}/WebPages/logIn.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/peanutBarrel.png" height="60" width="125" alt="Peanut Barrel" border="0"/></a></li>-->
 			</ul>
@@ -32,12 +33,7 @@
 
 		<!--Page-->
 		<div id= "content">
-			<ui:insert name="content">This page is blank. Please contact the Web Administrator for LilPeanutsChildCare.com at (517-528-2106)</ui:insert>
-		</div>
-		
-		<!--Footer -->
-		<div id="footer">
-			<br/><p>Copyright &copy; 2014 Lil Peanuts Child Care "All Rights Reserved"</p>
+			<ui:insert name="content">This page is blank. Please contact the Administrator.</ui:insert>
 		</div>
 	</h:body>
 </html>
