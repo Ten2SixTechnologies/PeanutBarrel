@@ -8,22 +8,6 @@ body {
 	text-align:center;
 }
 
-ul{
-	text-align:left;
-}
-
-#content{
-	width: 810px;
-	margin: 0 auto;
-}
-
-#footer{
-	width: 810px;
-    margin: 0 auto;
-	font-size: 10pt;
-	font-style: italic;
-}
-
 #navBar{
 	float: left;
 	list-style-type: none;
@@ -31,35 +15,27 @@ ul{
 	margin-right: 20px;
 }
 
+
+#content{
+	width: 820px;
+	margin: 0 auto;
+}
+
+ul{
+	text-align:left;
+}
+
 #alignLeft{
 	text-align:left;
+}
+
+#pictures{
+	float: center;
 }
 
 .image{
 	float: left;
 	padding: 5px;
-}
-
-#pictures{
-	float: center;
-	width: 810px;
-}
-
-.blackText{
-	color: black;
-}
-
-#fieldset{
-	border-color: black;
-}
-
-#label{
-	color: black;
-}
-
-.ui-panel {
-   background-color: rgba(0,0,0,0);
-   border: 0;
 }
 
 #scheduleTable{

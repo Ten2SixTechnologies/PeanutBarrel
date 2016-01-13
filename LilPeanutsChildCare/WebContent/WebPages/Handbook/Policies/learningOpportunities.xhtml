@@ -1,0 +1,40 @@
+<ui:composition template="/WEB-INF/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--Navigation Bar-->
+    <ui:define name="navBar">
+		<ul id= "navBar">
+			<li><a href="#{request.contextPath}/WebPages/Handbook/policies.xhtml"><img src="#{request.contextPath}/Resources/Images/NavigationBar/policies.png" height="60" width="125" alt="Policies" border="0"/></a></li>
+		</ul>
+	</ui:define>
+    
+	<!--Page-->
+	<ui:define name="content">
+		<u>Learning Opportunities</u><br/><br/><br/>
+		
+		The children's learning time is modeled after the Creative Curriculum Standards.
+		
+		<br/>
+		<br/>
+		
+		<u>Infants and todlers:</u>
+		<ul>
+			<li>Instruction is gained through play. I offer many differant activities and toys from which to choose.</li>
+		</ul>
+		<br/>
+		<u>Older toddlers and pre-school:</u>
+		<ul>
+			<li>Instruciton is gained through play. Their play is their work.</li>
+			<li>Play materials that are more focused on interaction for specific development areas.</li>
+			<li>Through our interaction and play, I will direct them toward patterns, sorting, adding, subtracting, writing, 
+				reading, logical thinking, problem solving, physical, social and emotional development.</li>
+		</ul>
+		<br/>
+		I will be using <a href= "http://teachingstrategies.com/content/pageDocs/GOLD-Touring-Guide_5-2013.pdf" target="_blank">Teaching Strategies Gold</a> 
+		to assess your child's progress and development in all areas. You will have 
+		two opportunities one in fall and one in spring to attend a Parent Teacher Conference. We will use this time to discuss 
+		your child's progress and development, and also discuss future goals.
+	</ui:define>
+</ui:composition>
