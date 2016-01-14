@@ -12,15 +12,14 @@ import javax.crypto.spec.PBEParameterSpec;
 import org.apache.commons.codec.binary.Base64;
 
 import com.peanutBarrel.dao.DAO;
+import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
 public class CridentialsDAO extends DAO
 {
 
     private static final char PASSWORD[] = "moveAlongCitizen,NothingToSeeHere".toCharArray();
-    private static final byte SALT[] = {
-        17, 34, 51, 68, 85, 102, 119, -120
-    };
+    private static final byte SALT[] = {17, 34, 51, 68, 85, 102, 119, -120};
 
     public CridentialsDAO()
     {
@@ -31,11 +30,14 @@ public class CridentialsDAO extends DAO
         Long cridentialsId = null;
         try
         {
-            cridentialsId = executeInsert((new StringBuilder("INSERT INTO CRIDENTIALS (USER_NAME, PWD, USER_TYPE_ID) VALUES ('")).append(userName).append("', '").append(encrypt(password)).append("', ").append(userType).append(")").toString());
+            cridentialsId = executeInsert((new StringBuilder("INSERT INTO CRIDENTIALS (USER_NAME, PWD, USER_TYPE_ID) VALUES ('"))
+            		.append(userName).append("', '")
+            		.append(encrypt(password)).append("', ")
+            		.append(userType).append(")").toString());
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -50,10 +52,7 @@ public class CridentialsDAO extends DAO
         long cridentialsId;
         ResultSet rs;
         cridentialsId = -1L;
-        if(!validateUserName(userName).booleanValue())
-        {
-            return -1L;
-        }
+        
         rs = executeQuery((new StringBuilder("SELECT * FROM CRIDENTIALS WHERE USER_NAME = '")).append(userName).append("'").toString());
         try
         {
@@ -64,7 +63,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -72,31 +71,6 @@ public class CridentialsDAO extends DAO
         }
         
         return Long.valueOf(cridentialsId);
-    }
-
-    private static Boolean validateUserName(String userName)
-    {
-        Boolean result;
-        ResultSet rs;
-        result = Boolean.valueOf(false);
-        rs = executeQuery((new StringBuilder("SELECT USER_NAME FROM CRIDENTIALS WHERE USER_NAME = '" + userName + "'").toString()));
-        try
-        {
-            if(rs.next())
-            {
-                result = Boolean.valueOf(true);
-            }
-        }
-        catch(Exception e)
-        {
-            System.out.print(e.getStackTrace());
-        }
-        finally
-        {
-        	DatabaseServices.closeCurrentConnection();
-        }
-        
-        return result;
     }
 
     public static int getUserTypeFromCridentialsId(Long cridentialsId)
@@ -114,7 +88,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -161,7 +135,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -173,14 +147,16 @@ public class CridentialsDAO extends DAO
 
     public static void changeCridentials(long adultId, int userType)
     {
-        String sql = (new StringBuilder("UPDATE cridentials SET user_type_id  = ")).append(userType).append(" where cridentials_id = (SELECT cridentials_id FROM adult WHERE adult_id = ").append(adultId).append(")").toString();
+        String sql = (new StringBuilder("UPDATE cridentials SET user_type_id  = "))
+        		.append(userType).append(" where cridentials_id = (SELECT cridentials_id FROM adult WHERE adult_id = ")
+        		.append(adultId).append(")").toString();
         try
         {
             executeUpdate(sql);
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {

@@ -7,6 +7,7 @@ import java.util.Map;
 import com.peanutBarrel.actions.ActionsDelegate;
 import com.peanutBarrel.dao.DAO;
 import com.peanutBarrel.entities.Adult;
+import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
 // Referenced classes of package com.peanutBarrel.dao.object:
@@ -34,7 +35,7 @@ public class FamilyDAO extends DAO
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -59,13 +60,14 @@ public class FamilyDAO extends DAO
                 Adult primaryAdult = AdultDAO.getAdult(Long.valueOf(rs.getLong("Primary_Adult_Id")));
                 if(ActionsDelegate.adultIsUser(primaryAdult))
                 {
-                    families.put((new StringBuilder(String.valueOf(primaryAdult.getFirstName()))).append(" ").append(primaryAdult.getLastName()).toString(), Integer.valueOf(rs.getInt("Family_Id")));
+                    families.put((new StringBuilder(String.valueOf(primaryAdult.getFirstName()))).append(" ")
+                    		.append(primaryAdult.getLastName()).toString(), Integer.valueOf(rs.getInt("Family_Id")));
                 }
             }
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -73,5 +75,27 @@ public class FamilyDAO extends DAO
         }
 
         return families;
+    }
+    
+    public static Long createNewFamily()
+    {
+        long newFamilyId;
+        String sql;
+        newFamilyId = 0L;
+        sql = (new StringBuilder("INSERT INTO FAMILY (Primary_Adult_Id) VALUES (")).append(AdultDAO.getNextAdultId()).append(")").toString();
+        try
+        {
+            newFamilyId = executeInsert(sql).longValue();
+        }
+        catch(Exception e)
+        {
+            ErrorLogger.LogError(e);
+        }
+        finally
+        {
+        	DatabaseServices.closeCurrentConnection();
+        }
+        
+        return Long.valueOf(newFamilyId);
     }
 }
