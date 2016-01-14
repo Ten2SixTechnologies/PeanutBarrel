@@ -10,10 +10,8 @@ import com.peanutBarrel.dao.DAO;
 import com.peanutBarrel.data.TimeLog;
 import com.peanutBarrel.entities.Adult;
 import com.peanutBarrel.entities.Child;
+import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
-
-// Referenced classes of package com.peanutBarrel.dao.object:
-//            ChildDAO, AdultDAO
 
 public class TimeLogDAO extends DAO
 {
@@ -27,11 +25,14 @@ public class TimeLogDAO extends DAO
         Long timeEntryId = null;
         try
         {
-            timeEntryId = executeInsert((new StringBuilder("INSERT INTO TIME_LOG (CHILD_ID,ADULT_IN_ID,TIME_IN) VALUES (")).append(timeEntry.getChild().getChildId()).append(",").append(timeEntry.getAdultIn().getAdultId()).append(",").append("'").append(new Timestamp(timeEntry.getTimeIn().getTime())).append("')").toString());
+            timeEntryId = executeInsert((new StringBuilder("INSERT INTO TIME_LOG (CHILD_ID,ADULT_IN_ID,TIME_IN) VALUES ("))
+            		.append(timeEntry.getChild().getChildId()).append(",")
+            		.append(timeEntry.getAdultIn().getAdultId()).append(",").append("'")
+            		.append(new Timestamp(timeEntry.getTimeIn().getTime())).append("')").toString());
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -45,11 +46,14 @@ public class TimeLogDAO extends DAO
         Long timeEntryId = null;
         try
         {
-            executeUpdate((new StringBuilder("UPDATE TIME_LOG SET Time_Out = '")).append(new Timestamp(timeEntry.getTimeOut().getTime())).append("',").append("Adult_Out_ID = ").append(timeEntry.getAdultOut().getAdultId()).append(" ").append("WHERE Time_Log_ID = ").append(timeEntry.getTimeLogId()).toString());
+            executeUpdate((new StringBuilder("UPDATE TIME_LOG SET Time_Out = '"))
+            		.append(new Timestamp(timeEntry.getTimeOut().getTime())).append("',")
+            		.append("Adult_Out_ID = ").append(timeEntry.getAdultOut().getAdultId()).append(" ")
+            		.append("WHERE Time_Log_ID = ").append(timeEntry.getTimeLogId()).toString());
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
@@ -60,38 +64,31 @@ public class TimeLogDAO extends DAO
 
     public static List<TimeLog> getTimeLog(Long childId)
     {
-        Adult adultOut;
         ResultSet rs;
-        List<TimeLog> timeLogs;
-        Long timeLogId = null;
-        Child child = null;
-        Adult adultIn = null;
-        Date timeIn = null;
-        adultOut = null;
-        Date timeOut = null;
+        List<TimeLog> timeLogs = new ArrayList<TimeLog>();
         
         rs = executeQuery((new StringBuilder("SELECT * FROM TIME_LOG WHERE Child_ID = ")).append(childId).toString());
-        timeLogs = new ArrayList<TimeLog>();
         
         try
         {
-            TimeLog timeLog;
             while(rs.next())
             {
-                timeLogId = Long.valueOf(rs.getLong("Time_Log_ID"));
-                child = ChildDAO.getChild(Long.valueOf(rs.getLong("Child_ID")));
-                adultIn = AdultDAO.getAdult(Long.valueOf(rs.getLong("Adult_In_ID")));
-                timeIn = rs.getDate("Time_In");
+                Long timeLogId = Long.valueOf(rs.getLong("Time_Log_ID"));
+                Child child = ChildDAO.getChild(Long.valueOf(rs.getLong("Child_ID")));
+                Adult adultIn = AdultDAO.getAdult(Long.valueOf(rs.getLong("Adult_In_ID")));
+                Date timeIn = rs.getDate("Time_In");
                 Long adultId = Long.valueOf(rs.getLong("Adult_Out_ID"));
+                
+                Adult adultOut = null;
                 
                 if(adultId.longValue() != 0L)
                 {
                     adultOut = AdultDAO.getAdult(adultId);
                 }
                 
-                timeOut = rs.getDate("Time_Out");
+                Date timeOut = rs.getDate("Time_Out");
                 
-                timeLog = new TimeLog();
+                TimeLog timeLog = new TimeLog();
                 timeLog.setTimeLogId(timeLogId);
                 timeLog.setChild(child);
                 timeLog.setAdultIn(adultIn);
@@ -104,7 +101,7 @@ public class TimeLogDAO extends DAO
         }
         catch(Exception e)
         {
-            System.out.print(e.getStackTrace());
+            ErrorLogger.LogError(e);
         }
         finally
         {
