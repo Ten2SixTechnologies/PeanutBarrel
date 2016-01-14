@@ -10,9 +10,6 @@ import com.peanutBarrel.entities.Adult;
 import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
-// Referenced classes of package com.peanutBarrel.dao.object:
-//            AdultDAO
-
 public class FamilyDAO extends DAO
 {
 

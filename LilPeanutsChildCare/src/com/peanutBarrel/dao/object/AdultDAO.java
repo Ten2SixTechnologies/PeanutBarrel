@@ -7,9 +7,6 @@ import com.peanutBarrel.entities.Adult;
 import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
-// Referenced classes of package com.peanutBarrel.dao.object:
-//            FamilyDAO, ContactInfoDAO, CridentialsDAO, AddressDAO
-
 public class AdultDAO extends DAO
 {
 

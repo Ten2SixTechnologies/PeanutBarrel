@@ -12,9 +12,6 @@ import com.peanutBarrel.entities.Child;
 import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
-// Referenced classes of package com.peanutBarrel.dao.object:
-//            ChildInfoDAO
-
 public class ChildDAO extends DAO
 {
 
