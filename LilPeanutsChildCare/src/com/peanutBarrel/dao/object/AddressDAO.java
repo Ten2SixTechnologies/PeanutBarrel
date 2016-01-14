@@ -7,9 +7,6 @@ import com.peanutBarrel.data.Address;
 import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
-// Referenced classes of package com.peanutBarrel.dao.object:
-//            StateDAO
-
 public class AddressDAO extends DAO
 {
 
