@@ -31,7 +31,8 @@ public class Roster
 
     public void loadChildren()
     {
-        setChildren(ActionsDelegate.getChildren(adult));
+        List<Child> children = ActionsDelegate.getChildren(adult);
+        setChildren(children);
     }
 
     public StreamedContent getPicture()
