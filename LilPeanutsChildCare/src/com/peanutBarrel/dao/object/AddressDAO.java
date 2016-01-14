@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 
 import com.peanutBarrel.dao.DAO;
 import com.peanutBarrel.data.Address;
-import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
 // Referenced classes of package com.peanutBarrel.dao.object:
@@ -26,7 +25,7 @@ public class AddressDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
@@ -70,7 +69,7 @@ public class AddressDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
@@ -110,7 +109,7 @@ public class AddressDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {

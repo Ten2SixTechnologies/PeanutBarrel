@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 
 import com.peanutBarrel.dao.DAO;
 import com.peanutBarrel.entities.Adult;
-import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
 // Referenced classes of package com.peanutBarrel.dao.object:
@@ -19,35 +18,54 @@ public class AdultDAO extends DAO
 
     public static Adult getAdult(Long adultId)
     {
-    	Adult adult = new Adult();
+        Long familyId;
+        Long cridentialsId;
+        Long contactInfoId;
+        String firstName;
+        String lastName;
+        String middleName;
         ResultSet rs;
-
+        familyId = null;
+        cridentialsId = null;
+        contactInfoId = null;
+        firstName = null;
+        lastName = null;
+        middleName = null;
         rs = executeQuery((new StringBuilder("SELECT * FROM ADULT WHERE Adult_ID = ")).append(adultId).toString());
         try
         {
             if(rs.next())
             {
-            	adult.setAdultId(adultId);
-            	adult.setContactInfo(ContactInfoDAO.getContactInfo(Long.valueOf(rs.getLong("Contact_Info_Id"))));
-            	adult.setCridentialsId(Long.valueOf(rs.getLong("Cridentials_Id")));
-            	adult.setUserType(CridentialsDAO.getUserTypeFromCridentialsId(adult.getCridentialsId()));
-            	adult.setFamilyId(FamilyDAO.getNextFamilyId());
-            	adult.setFirstName(rs.getString("First_Name"));
-            	adult.setLastName(rs.getString("Last_Name"));
-            	
-            	String middleName = rs.getString("Middle_Name");
-            	adult.setMiddleName((middleName == null) ? "" : middleName);
+                familyId = FamilyDAO.getNextFamilyId();
+                cridentialsId = Long.valueOf(rs.getLong("Cridentials_Id"));
+                contactInfoId = Long.valueOf(rs.getLong("Contact_Info_Id"));
+                firstName = rs.getString("First_Name");
+                lastName = rs.getString("Last_Name");
+                middleName = rs.getString("Middle_Name");
+                if(middleName == null)
+                {
+                    middleName = "";
+                }
             }
         }
         catch(Exception e)
         {
-        	ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
         	DatabaseServices.closeCurrentConnection();
         }
         
+        Adult adult = new Adult();
+        adult.setAdultId(adultId);
+        adult.setContactInfo(ContactInfoDAO.getContactInfo(contactInfoId));
+        adult.setCridentialsId(cridentialsId);
+        adult.setUserType(getUserType(cridentialsId));
+        adult.setFamilyId(familyId);
+        adult.setFirstName(firstName);
+        adult.setLastName(lastName);
+        adult.setMiddleName(middleName);
         return adult;
     }
 
@@ -67,7 +85,7 @@ public class AdultDAO extends DAO
         }
         catch(Exception e)
         {
-			ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
@@ -75,6 +93,31 @@ public class AdultDAO extends DAO
         }
         
         return adult;
+    }
+
+    private static int getUserType(Long cridenialsId)
+    {
+        int userType;
+        ResultSet rs;
+        userType = -1;
+        rs = executeQuery((new StringBuilder("SELECT User_Type_Id FROM CRIDENTIALS WHERE Cridentials_ID = ")).append(cridenialsId).toString());
+        try
+        {
+            if(rs.next())
+            {
+                userType = rs.getInt("User_Type_Id");
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.print(e.getStackTrace());
+        }
+        finally
+        {
+        	DatabaseServices.closeCurrentConnection();
+        }
+        
+        return userType;
     }
 
     public static Adult addAdult(Adult adult)
@@ -82,27 +125,21 @@ public class AdultDAO extends DAO
         String sql;
         if(adult.getFamilyId().longValue() == 0L)
         {
-            adult.setFamilyId(FamilyDAO.createNewFamily());
+            adult.setFamilyId(createNewFamily());
         }
-        
         adult.setCridentialsId(Long.valueOf(CridentialsDAO.getLatestCridentialsId()));
         adult.getContactInfo().getAddress().setAddressId(AddressDAO.persistAddress(adult.getContactInfo().getAddress()));
         adult.getContactInfo().setContactInfoId(Long.valueOf(ContactInfoDAO.persistContactInfo(adult.getContactInfo())));
-        
-        sql = (new StringBuilder("INSERT INTO ADULT (First_Name, Middle_Name, Last_Name, Family_Id, Contact_Info_Id, Cridentials_Id)VALUES ('"))
-        		.append(adult.getFirstName()).append("', ").append("'")
-        		.append(adult.getMiddleName()).append("', ").append("'")
-        		.append(adult.getLastName()).append("', ")
-        		.append(adult.getFamilyId()).append(", ")
-        		.append(adult.getContactInfo().getContactInfoId()).append(", ")
-        		.append(adult.getCridentialsId()).append(")").toString();
+        sql = (new StringBuilder("INSERT INTO ADULT (First_Name, Middle_Name, Last_Name, Family_Id, Contact_Info_I" +
+"d, Cridentials_Id)VALUES ('"
+)).append(adult.getFirstName()).append("', ").append("'").append(adult.getMiddleName()).append("', ").append("'").append(adult.getLastName()).append("', ").append(adult.getFamilyId()).append(", ").append(adult.getContactInfo().getContactInfoId()).append(", ").append(adult.getCridentialsId()).append(")").toString();
         try
         {
             adult.setAdultId(executeInsert(sql));
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
@@ -112,7 +149,29 @@ public class AdultDAO extends DAO
         return adult;
     }
 
-    public static int getNextAdultId()
+    private static Long createNewFamily()
+    {
+        long newFamilyId;
+        String sql;
+        newFamilyId = 0L;
+        sql = (new StringBuilder("INSERT INTO FAMILY (Primary_Adult_Id) VALUES (")).append(getNextAdultId()).append(")").toString();
+        try
+        {
+            newFamilyId = executeInsert(sql).longValue();
+        }
+        catch(Exception e)
+        {
+            System.out.print(e.getStackTrace());
+        }
+        finally
+        {
+        	DatabaseServices.closeCurrentConnection();
+        }
+        
+        return Long.valueOf(newFamilyId);
+    }
+
+    private static int getNextAdultId()
     {
         int newAdultId;
         String sql;
@@ -130,7 +189,7 @@ public class AdultDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {

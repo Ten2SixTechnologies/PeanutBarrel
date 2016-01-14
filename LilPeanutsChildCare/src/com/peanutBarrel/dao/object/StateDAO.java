@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.peanutBarrel.dao.DAO;
-import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
 
 public class StateDAO extends DAO
@@ -30,7 +29,7 @@ public class StateDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
@@ -55,7 +54,7 @@ public class StateDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
@@ -83,7 +82,7 @@ public class StateDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            System.out.print(e.getStackTrace());
         }
         finally
         {
