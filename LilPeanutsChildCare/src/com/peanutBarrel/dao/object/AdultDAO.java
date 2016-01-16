@@ -1,10 +1,14 @@
 package com.peanutBarrel.dao.object;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.peanutBarrel.constants.UserType;
 import com.peanutBarrel.dao.DAO;
 import com.peanutBarrel.entities.Adult;
 import com.peanutBarrel.errorLogging.ErrorLogger;
+import com.peanutBarrel.runtimeExceptions.DataNotFoundException;
 import com.peanutBarrel.services.DatabaseServices;
 
 public class AdultDAO extends DAO
@@ -19,7 +23,8 @@ public class AdultDAO extends DAO
     	Adult adult = new Adult();
         ResultSet rs;
 
-        rs = executeQuery((new StringBuilder("SELECT * FROM ADULT WHERE Adult_ID = ")).append(adultId).toString());
+        String sql = (new StringBuilder("SELECT * FROM ADULT WHERE Adult_ID = ")).append(adultId).toString();
+        rs = executeQuery(sql);
         try
         {
             if(rs.next())
@@ -35,10 +40,13 @@ public class AdultDAO extends DAO
             	String middleName = rs.getString("Middle_Name");
             	adult.setMiddleName((middleName == null) ? "" : middleName);
             }
+            else {
+            	throw new DataNotFoundException(sql);
+            }
         }
         catch(Exception e)
         {
-        	ErrorLogger.LogError(e);
+        	ErrorLogger.logError(e);
         }
         finally
         {
@@ -53,7 +61,8 @@ public class AdultDAO extends DAO
         Adult adult;
         ResultSet rs;
         adult = new Adult();
-        rs = executeQuery((new StringBuilder("SELECT Adult_Id FROM ADULT WHERE Cridentials_Id = ")).append(cridentialsId).toString());
+        String sql = (new StringBuilder("SELECT Adult_Id FROM ADULT WHERE Cridentials_Id = ")).append(cridentialsId).toString();
+        rs = executeQuery(sql);
         try
         {
             if(rs.next())
@@ -61,10 +70,13 @@ public class AdultDAO extends DAO
                 long adultId = rs.getLong("Adult_Id");
                 adult = getAdult(Long.valueOf(adultId));
             }
+            else {
+            	throw new DataNotFoundException(sql);
+            }
         }
         catch(Exception e)
         {
-			ErrorLogger.LogError(e);
+			ErrorLogger.logError(e);
         }
         finally
         {
@@ -99,7 +111,7 @@ public class AdultDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -124,10 +136,13 @@ public class AdultDAO extends DAO
                 int maxAdultId = rs.getInt("Adult_Id");
                 newAdultId = ++maxAdultId;
             }
+            else {
+            	throw new DataNotFoundException(sql);
+            }
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -135,5 +150,84 @@ public class AdultDAO extends DAO
         }
         
         return newAdultId;
+    }
+    
+    public static List<Adult> getAllAdults()
+    {
+    	List<Adult> adults = new ArrayList<Adult>();
+    	adults.addAll(getAllUsers());
+    	
+    	return adults;
+    }
+    
+    private static List<Adult> getAllUsers()
+    {
+    	List<Adult> adults = new ArrayList<Adult>();
+    	String sql = "SELECT ADULT_ID FROM ADULT "
+    			+ "JOIN CRIDENTIALS ON ADULT.CRIDENTIALS_ID = CRIDENTIALS.CRIDENTIALS_ID "
+    			+ "WHERE USER_TYPE_ID = " + UserType.USER.getKey();
+    	ResultSet rs = null;
+    	
+    	try
+    	{
+    		rs = executeQuery(sql);
+
+    		List<Long> adultIds = new ArrayList<Long>();
+    		while(rs.next())
+    		{
+    			adultIds.add(rs.getLong("ADULT_ID"));
+    		}
+    		
+    		if(adultIds.isEmpty())
+    		{
+    			throw new DataNotFoundException(sql);
+    		}
+    		
+    		for(Long adultId : adultIds)
+    		{
+    			adults.add(getAdult(adultId));
+    		}
+    	}
+    	catch (Exception e) {
+    		ErrorLogger.logError(e);
+    	}
+    	
+    	return adults;
+    }
+    
+    public static Adult getAdultWithName(String adultName)
+    {
+    	Adult adult = new Adult();
+    	
+    	if(adultName != null && adultName.equals("") == false)
+    	{
+	    	String[] parsedAdultName = adultName.split(" ");
+	    	String firstName = parsedAdultName[0];
+	    	String lastName = parsedAdultName[1];
+	    	
+	    	String sql = "SELECT ADULT_ID FROM ADULT WHERE FIRST_NAME = '" + firstName + "' AND LAST_NAME = '" + lastName + "'";
+	    	ResultSet rs = null;
+	    	
+	    	try
+	    	{
+	    		rs = executeQuery(sql);
+	
+	    		Long adultId = 0L;
+	    		if(rs.next())
+	    		{
+	    			adultId = rs.getLong("ADULT_ID");
+	    		}
+	    		else {
+	    			throw new DataNotFoundException(sql);
+	    		}
+	    		
+	    		adult = getAdult(adultId);
+	    	}
+	    	catch (Exception e) {
+	    		ErrorLogger.logError(e);
+	    	}
+    	}
+    	
+    	return adult;
     }
 }

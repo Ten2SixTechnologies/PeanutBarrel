@@ -1,5 +1,6 @@
 package com.peanutBarrel.entities;
 
+import com.peanutBarrel.constants.UserType;
 import com.peanutBarrel.data.ContactInfo;
 
 public class Adult
@@ -8,7 +9,7 @@ public class Adult
     Long adultId;
     Long familyId;
     Long cridentialsId;
-    int userType;
+    UserType userType;
     ContactInfo contactInfo;
     String firstName;
     String middleName;
@@ -17,7 +18,7 @@ public class Adult
     public Adult()
     {
         adultId = new Long(-1L);
-        userType = 1;
+        userType = UserType.INVALID;
     }
 
     public void setAdultId(Long adultId)
@@ -35,7 +36,7 @@ public class Adult
         this.cridentialsId = cridentialsId;
     }
 
-    public void setUserType(int userType)
+    public void setUserType(UserType userType)
     {
         this.userType = userType;
     }
@@ -75,7 +76,7 @@ public class Adult
         return cridentialsId;
     }
 
-    public int getUserType()
+    public UserType getUserType()
     {
         return userType;
     }
@@ -103,7 +104,7 @@ public class Adult
     public Adult(ContactInfo contactInfo)
     {
         adultId = new Long(-1L);
-        userType = 1;
+        userType = UserType.INVALID;
         this.contactInfo = contactInfo;
     }
 }

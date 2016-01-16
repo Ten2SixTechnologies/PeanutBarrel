@@ -57,6 +57,6 @@ public class LogInValidation
     {
         setAdult(ActionsDelegate.signIn(userName, password, adult));
         userName = "";
-        return adult.getUserType();
+        return adult.getUserType().getKey();
     }
 }

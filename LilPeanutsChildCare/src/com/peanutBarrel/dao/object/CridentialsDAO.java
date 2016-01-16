@@ -11,6 +11,7 @@ import javax.crypto.spec.PBEParameterSpec;
 
 import org.apache.commons.codec.binary.Base64;
 
+import com.peanutBarrel.constants.UserType;
 import com.peanutBarrel.dao.DAO;
 import com.peanutBarrel.errorLogging.ErrorLogger;
 import com.peanutBarrel.services.DatabaseServices;
@@ -37,7 +38,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -63,7 +64,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -73,22 +74,23 @@ public class CridentialsDAO extends DAO
         return Long.valueOf(cridentialsId);
     }
 
-    public static int getUserTypeFromCridentialsId(Long cridentialsId)
+    public static UserType getUserTypeFromCridentialsId(Long cridentialsId)
     {
-        int userType;
+        UserType userType;
         ResultSet rs;
-        userType = -1;
+        userType = UserType.INVALID;
         rs = executeQuery((new StringBuilder("SELECT * FROM CRIDENTIALS WHERE Cridentials_ID = ")).append(cridentialsId).toString());
         try
         {
             if(rs.next())
             {
-                userType = rs.getInt("User_Type_Id");
+                int userTypeKey = rs.getInt("User_Type_Id");
+                userType = UserType.getUserType(userTypeKey);
             }
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -135,7 +137,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -156,7 +158,7 @@ public class CridentialsDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {

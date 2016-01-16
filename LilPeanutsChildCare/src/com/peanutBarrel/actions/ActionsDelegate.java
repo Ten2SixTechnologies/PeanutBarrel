@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.peanutBarrel.constants.UserType;
 import com.peanutBarrel.dao.object.AdultDAO;
 import com.peanutBarrel.dao.object.ChildDAO;
 import com.peanutBarrel.dao.object.CridentialsDAO;
@@ -120,6 +121,13 @@ public class ActionsDelegate
     {
         return Sorter.sortChildren(ChildDAO.getChildren(adult.getAdultId()));
     }
+    
+    public static List<Adult> getAllAdults()
+    {
+    	List<Adult> allAdults = AdultDAO.getAllAdults();
+    	
+    	return (allAdults.isEmpty() ? null : allAdults);
+    }
 
     public static List<TimeLog> getTimeLog(Child child)
     {
@@ -162,7 +170,7 @@ public class ActionsDelegate
     public static boolean adultIsUser(Adult primaryAdult)
     {
         boolean result = false;
-        if(2 == CridentialsDAO.getUserTypeFromCridentialsId(primaryAdult.getCridentialsId()))
+        if(UserType.USER == CridentialsDAO.getUserTypeFromCridentialsId(primaryAdult.getCridentialsId()))
         {
             result = true;
         }
