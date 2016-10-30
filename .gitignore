@@ -1,6 +1,6 @@
 .metadata/
 Servers/
-*.classpath
+.*
 
 # Compiled source #
 ###################
