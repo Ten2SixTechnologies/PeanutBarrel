@@ -1,16 +1,33 @@
 package com.peanutBarrel.constants;
 
 
-public class UserType
-{
+public enum UserType {
 
-    public static final int ADMINISTRATOR = 4;
-    public static final int OWNER = 3;
-    public static final int USER = 2;
-    public static final int INVALID = 1;
-    public static final int NEW_USER = 0;
-
-    public UserType()
-    {
-    }
+    ADMINISTRATOR (3),
+    OWNER (2),
+    USER (1),
+    NEW_USER (0),
+    INVALID (-1);
+	
+	private final int key;
+	
+	private UserType(int key) {
+		this.key = key;
+	}
+	
+	public int getKey() {
+		return this.key;
+	}
+	
+	public static UserType getUserType(int key) {
+		UserType userTypeOutput = UserType.INVALID;
+		
+		for (UserType userType : values()) {
+			if(userType.getKey() == key) {
+				return userType;
+			}
+		}
+		
+		return userTypeOutput;
+	}
 }

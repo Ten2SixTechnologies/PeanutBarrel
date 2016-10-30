@@ -32,7 +32,7 @@ public class FamilyDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -64,7 +64,7 @@ public class FamilyDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -86,7 +86,7 @@ public class FamilyDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {

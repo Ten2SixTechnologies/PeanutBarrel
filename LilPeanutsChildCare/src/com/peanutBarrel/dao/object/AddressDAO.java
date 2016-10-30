@@ -23,7 +23,7 @@ public class AddressDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -67,7 +67,7 @@ public class AddressDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {
@@ -107,7 +107,7 @@ public class AddressDAO extends DAO
         }
         catch(Exception e)
         {
-            ErrorLogger.LogError(e);
+            ErrorLogger.logError(e);
         }
         finally
         {

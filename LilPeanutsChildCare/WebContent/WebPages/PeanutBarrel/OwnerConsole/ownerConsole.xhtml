@@ -20,5 +20,19 @@
 			<h:commandButton id="changeCredentials" tabindex="3" value="Change Credentials" action="#{ownerConsole.changeCridentials}"/>
 			<h:commandButton id="newChildButton" tabindex="2" value="New Child" action="#{ownerConsole.newChild}"/>
 		</h:form>
+		
+		<h:form>
+			<div class="adultNameList">
+			    <ui:repeat var="adult" value="#{ownerConsole.adultNames}" varStatus="varStatus">
+			    	<input type="radio" name="selectedAdult" value="#{adult}"/> #{adult} <br/>
+				</ui:repeat>
+			</div>
+			
+			<div class="childNameList">
+			    <ui:repeat var="child" value="#{ownerConsole.childNames}" varStatus="varStatus">
+			    	<input type="radio" name="selectedChild"/> #{child} <br/>
+				</ui:repeat>
+			</div>
+		</h:form>
 	</ui:define>
 </ui:composition>
